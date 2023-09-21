@@ -1,0 +1,45 @@
+---
+- name: solution 
+  ignore_errors: true
+  hosts: localhost
+  tasks: 
+  - name: installing a software
+    yum: 
+     name: xyz
+     state: present
+    register: yum_output
+
+  - name: printing the output
+    debug: 
+     var: yum_output
+
+  - name: priting msg
+    debug: 
+     msg: installation is failed
+    when: yum_output.failed == true 
+
+  - name: priting msg
+    debug: 
+     msg: installation is successfull
+    when: yum_output.failed == false 
+
+  - name: start the service
+    service: 
+     name: ekt23
+     state: started 
+    register: svc_output
+
+  - name: priting msg
+    debug: 
+     msg: service is failed 
+    when: svc_output.failed == true 
+
+  - name: priting msg
+    debug: 
+     msg: service is success 
+    when: svc_output.failed == false 
+
+  - name: printing msg
+    debug: 
+     msg: playbook was unsuccessful
+    when: yum_output.failed == true and  svc_output.failed == true 

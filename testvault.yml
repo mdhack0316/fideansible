@@ -1,0 +1,12 @@
+---
+- name: printing the var value
+  hosts: all
+  vars_files: 
+  - vault.yml
+  tasks: 
+  - name: debug module us
+    debug: 
+     var: dev_pass
+  - name: debug module us
+    debug: 
+     var: mgr_pass

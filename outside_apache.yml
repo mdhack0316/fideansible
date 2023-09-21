@@ -1,0 +1,20 @@
+---
+- name: Configuring Apache
+  hosts: all
+  vars_files: 
+  - outvar
+  tasks:
+  - name: Install the package
+    yum:
+     name: "{{ pkg_name }}"
+     state: present
+
+  - name: creating index file
+    copy:
+     content: "{{ data }}"
+     dest: /var/www/html/index.html
+
+  - name: mayank
+    service: 
+     name: "{{ svc_name }}"
+     state: restarted

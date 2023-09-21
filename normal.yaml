@@ -1,0 +1,14 @@
+---
+- name: Creating Normal YAML
+  hosts: all 
+  tasks: 
+  - name: creating file
+    file: 
+     path: /var/mayank
+     state: touch 
+     mode: 0400
+  - name: creating folder
+    file: 
+     path: /usr/mayank
+     state: directory
+

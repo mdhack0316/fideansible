@@ -1,0 +1,9 @@
+---
+- name: printing the var value
+  hosts: all
+  vars_files: 
+  - outsidevar
+  tasks: 
+  - name: debug module us
+    debug: 
+     var: print

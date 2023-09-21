@@ -1,0 +1,9 @@
+---
+- name: Using setup Module
+  hosts: all 
+  tasks:
+  - name: Creating inventory file
+    copy: 
+     content: "{{ ansible_processor_cores }} {{ ansible_memtotal_mb }} {{ ansible_hostname }}"
+     dest: /mayank.txt
+    delegate_to: localhost

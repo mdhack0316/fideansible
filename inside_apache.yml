@@ -1,0 +1,22 @@
+---
+- name: Configuring Apache
+  hosts: all
+  vars: 
+    pkg_name: httpd
+    svc_name: httpd
+    data: Hello From Ansible Automation!!
+  tasks:
+  - name: Install the package
+    yum:
+     name: "{{ pkg_name }}"
+     state: present
+
+  - name: creating index file
+    copy:
+     content: "{{ data }}"
+     dest: /var/www/html/index.html
+
+  - name: mayank
+    service: 
+     name: "{{ svc_name }}"
+     state: restarted
