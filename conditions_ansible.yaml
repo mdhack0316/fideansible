@@ -1,0 +1,22 @@
+---
+- name: Trying ansible conditions
+  ignore_errors: yes
+  hosts: all 
+  tasks: 
+  - name: Installing package
+    yum: 
+     name: httpd
+     state: present 
+    register: yum_output
+    when: ansible_distribution ==  'Fedora'  or ansible_hostname == 'centos28'
+
+  - name: Installing package
+    yum: 
+     name: ekt23
+     state: present 
+    when: yum_output
+
+  - name: start the service
+    service: 
+     name: ekt23
+     state: started 

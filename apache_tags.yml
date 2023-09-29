@@ -1,0 +1,29 @@
+---
+- name: Configuring Apache Server 
+  hosts: all
+  tasks:
+  - name: Installation of Apache server package
+    yum: 
+     name: httpd
+     state: present 
+
+  - name: Create Index File 
+    copy: 
+     content: "Hello Fidelity!! This is Ansible Automation Here!! Thanks For Joining"
+     dest: /var/www/html/index.html 
+    tags: content
+
+  - name: Starting  The Service 
+    service: 
+     name: httpd
+     state: started 
+     enabled: yes
+    tags: always
+
+  - name: Enable the Firewall
+    firewalld: 
+     service: http
+     immediate: true
+     permanent: yes
+     state: enabled 
+    tags: never

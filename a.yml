@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  vars_files:
+  - env
+  tasks:
+  - debug:  
+     msg: "{{ users[1] }}"

@@ -1,0 +1,5 @@
+---
+- name: Calling A role For configuring Apache Server
+  hosts: webserver
+  roles: 
+  - fideapache

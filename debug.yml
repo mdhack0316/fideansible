@@ -1,0 +1,13 @@
+---
+- name: Learning Debug Module 
+  hosts: node2
+  tasks: 
+  - name: install one package
+    yum: 
+     name: ['bind','vsftpd']
+     state: present 
+    register: yum_output
+
+  - name: printing the output
+    debug:
+     var: yum_output

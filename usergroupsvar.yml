@@ -1,0 +1,5 @@
+---
+- hosts: webserver,dbserver 
+  tasks: 
+  - debug: 
+     msg: "{{ test1 }}"

@@ -1,0 +1,16 @@
+---
+- hosts: webserver
+  tasks: 
+  - block: 
+    - yum: 
+       name: httpd
+       state: present
+
+    - copy: 
+       content: hi
+       dest: /var/www/html/index.html
+
+    - debug: 
+       msg: "Hello"
+    when: inventory_hostname != 'node1' 
+

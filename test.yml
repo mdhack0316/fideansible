@@ -1,0 +1,18 @@
+---
+- name: Running A Script
+  hosts: webserver
+  tasks: 
+  - name: Creatng a script
+    copy:
+     src: mayank.sh
+     dest: /mayank.sh
+  - name: Running that script
+    shell: bash /mayank.sh
+    register: mayank
+
+  - debug: 
+     var: mayank.stdout
+  - debug: 
+     msg: successful
+    when: mayank.stdout is match(".*Ansible")
+

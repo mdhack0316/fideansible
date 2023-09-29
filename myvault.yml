@@ -1,0 +1,9 @@
+---
+- name: using vault var
+  vars_files:
+  - newvarvault
+  hosts: webserver
+  tasks: 
+  - name: Priting msgs
+    debug: 
+     msg: "{{ name }} {{ trainingname }} {{ dates }}"

@@ -1,0 +1,8 @@
+---
+- name: Using template Changing content
+  hosts: all 
+  tasks: 
+  - name: using template module to change the content
+    template: 
+     src: index.html.j2 
+     dest: /var/www/html/index.html 

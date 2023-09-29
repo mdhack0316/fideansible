@@ -1,0 +1,13 @@
+---
+- name: Retrieving the info 
+  hosts: node2,node1
+  tasks: 
+  - name: retriving the hostname 
+    debug: 
+     msg: "{{ ansible_hostname }}" 
+  - name: Creating file with some info of Managed Machines
+    copy: 
+     content: "{{ ansible_hostname }} {{ ansible_distribution }} {{ ansible_processor_vcpus }} {{ ansible_memtotal_mb }}"
+     dest: /myinfo
+  - name: using setup module
+    setup: 

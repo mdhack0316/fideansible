@@ -1,0 +1,9 @@
+---
+- name: Understading the concept of YAML
+  hosts: all
+  tasks:
+  - name: Creating One File 
+    file:
+     path: /ansible.new
+     state: touch  
+     mode: '0755' 

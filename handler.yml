@@ -1,0 +1,38 @@
+---
+- name: Configuring Apache Server 
+  hosts: webserver
+  tasks:
+  - name: Installation of Apache server package
+    yum: 
+     name: httpd
+     state: present 
+
+  - name: Create Index File 
+    copy: 
+     content: "This is Ansible Automation Here!! Learning Handler"
+     dest: /var/www/html/index.html 
+    notify: myhandler
+
+  - name: Checking website 
+    uri:
+     url: http://192.168.100.28
+     return_content: yes
+    register: output
+
+  - debug: 
+     var: output.content
+
+
+  handlers:
+
+  - name: service 
+    service: 
+     name: httpd
+     state: started 
+     enabled: yes
+    listen: myhandler
+
+  - name: testing
+    debug: 
+     msg: Testing iS Done
+    listen: myhandler

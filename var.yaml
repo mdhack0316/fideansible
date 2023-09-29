@@ -1,0 +1,16 @@
+---
+- name: Learn About VAriables
+  hosts: node1
+  vars:
+    content: "Hello Team, This is Ansible Training"
+    pkg: httpd
+  tasks: 
+  - name: Printing Some Msgs 
+    debug: 
+     msg: "{{ content  }} {{ pkg }}"
+
+  - name: Printing Some Msgs 
+    debug: 
+     msg: "{{ pkg }}"
+
+

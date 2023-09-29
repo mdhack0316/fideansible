@@ -1,0 +1,13 @@
+---
+- name: Learn About VAriables
+  hosts: node1
+  vars_files:
+  - /home/admin/ansible/myvar1 
+  - /home/admin/ansible/myvar 
+  tasks: 
+
+  - name: Printing Some Msgs 
+    debug: 
+     msg: "{{ pkg }}"
+    vars: 
+     pkg: httpd
